@@ -26,27 +26,25 @@ function showListView() {
 }
 
 async function rederMovieList(arg, itemListCtrl) {
-    const END_POINT = MOVIEAPP_API + arg;
-    try {
-        const response = await fetch(END_POINT);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        movieListData = await response.json();
+    const END_POINT = 'api/movie' + arg;
+    const response = await fetch(END_POINT);
+    const responseData = await response.json();
+    if (Array.isArray(responseData)) {
+        movieListData = responseData;
+    } else {
+        movieListData = [responseData];
+    }   
 
-        let cnt = 0;
-        for (item of movieListData) {
-            item.editHref = `javaScript:showEditView(${cnt})`;
-            item.detailHref = `javaScript:showDetailsView(${cnt})`;
-            item.deleteHref = `javaScript:deleteListIem(${cnt})`;
-            item.releaseDate = dateFormate(item.releaseDate);
-            item.updateCaption = 'Update';
-            cnt++
-        }
-        DOMTemplate.bindTemplate(itemListCtrl, movieListData, DOMTemplate.oderBy.ASC);
-    } catch (e) {
-        $id('display').innerText = `Error : ${e.message}`;
+    let cnt= 0;
+    for (item of movieListData) {
+        item.editHref = `javaScript:showEditView(${cnt})`;
+        item.detailHref = `javaScript:showDetailsView(${cnt})`;
+        item.deleteHref = `javaScript:deleteListIem(${cnt})`;
+        item.releaseDate = dateFormate(item.releaseDate);
+        item.updateCaption = 'Update';
+        cnt++
     }
+    DOMTemplate.bindTemplate(itemListCtrl, movieListData, DOMTemplate.oderBy.ASC);
 }
 
 //新規作成画面を表示
