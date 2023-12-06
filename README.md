@@ -1,6 +1,6 @@
 # SPA-Movie
 
-このプロジェクトは、Azure PaaS のデプロイから運用までを説明するハンズオン用のアプリケーションです。
+このプロジェクトは、Azure PaaS のデプロイから運用までを説明する[ハンズオン](https://github.com/osamum/Azure-AppService-handson/blob/main/ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-5--cors-%E8%A8%AD%E5%AE%9A%E3%81%AE%E7%A2%BA%E8%AA%8D%E3%81%A8%E5%A4%89%E6%9B%B4)用のアプリケーションです。
 
 このアプリケーションは、ハンズオン用の演習アプリケーションがホストする REST API を使用して動作する SPA (Single Page Application) です。
 
