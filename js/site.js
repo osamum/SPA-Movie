@@ -26,7 +26,6 @@ function showListView() {
 }
 
 async function rederMovieList(arg, itemListCtrl) {
-    //const END_POINT = 'api/movie' + arg;
     const response = await fetch(MOVIEAPP_API);
     const responseData = await response.json();
     if (Array.isArray(responseData)) {
